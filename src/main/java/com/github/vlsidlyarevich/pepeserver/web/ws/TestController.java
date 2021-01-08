@@ -12,8 +12,7 @@ public class TestController {
 
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
-    public Message greeting(Message message) throws Exception {
-        log.info(message.getBody());
-        return new Message("Hello websocket");
+    public Message greeting(Message message) {
+        return new Message("Hello " + message.getBody());
     }
 }
