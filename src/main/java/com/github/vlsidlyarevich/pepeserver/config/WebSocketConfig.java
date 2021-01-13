@@ -8,6 +8,12 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
+/**
+ * JacksonConfig
+ *
+ * @author Vladislav Sidlyarevich <vlsidlyarevich@gmail.com>
+ * Created on 1/05/21.
+ */
 @Configuration
 @EnableWebSocketMessageBroker
 @AllArgsConstructor(onConstructor = @__(@Autowired))
