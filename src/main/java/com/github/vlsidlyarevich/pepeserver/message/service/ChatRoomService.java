@@ -1,5 +1,7 @@
 package com.github.vlsidlyarevich.pepeserver.message.service;
 
+import com.github.vlsidlyarevich.pepeserver.message.domain.ChatRoom;
+
 /**
  * ChatRoomService
  *
@@ -7,4 +9,6 @@ package com.github.vlsidlyarevich.pepeserver.message.service;
  * Created on 1/13/21.
  */
 public interface ChatRoomService {
+
+    ChatRoom save(ChatRoom toSave);
 }
