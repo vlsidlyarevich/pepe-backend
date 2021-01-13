@@ -1,17 +1,21 @@
 package com.github.vlsidlyarevich.pepeserver.message.service;
 
 import com.github.vlsidlyarevich.pepeserver.AbstractUnitTest;
+import com.github.vlsidlyarevich.pepeserver.message.domain.ChatRoom;
 import com.github.vlsidlyarevich.pepeserver.message.repository.ChatRoomRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.mockito.Mock;
 
+import static org.assertj.core.util.Lists.emptyList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
 
 class DefaultChatRoomServiceTest extends AbstractUnitTest {
 
-    @MockBean
+    @Mock
     private ChatRoomRepository repository;
 
     @InjectMocks
@@ -24,5 +28,16 @@ class DefaultChatRoomServiceTest extends AbstractUnitTest {
                 "Expected save() to throw IllegalArgumentException");
 
         assertEquals(thrown.getMessage(), "Can't save nullable ChatRoom");
+    }
+
+    @Test
+    public void save_savedObject_ifNotNull() {
+        ChatRoom toSave = new ChatRoom("name", emptyList(), null, null, emptyList());
+
+        when(repository.save(eq(toSave))).thenReturn(toSave);
+
+        ChatRoom saved = sut.save(toSave);
+
+        assertEquals(toSave, saved);
     }
 }
