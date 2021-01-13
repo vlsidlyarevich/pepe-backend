@@ -1,11 +1,15 @@
 package com.github.vlsidlyarevich.pepeserver.message.domain;
 
 import lombok.Value;
-import org.springframework.data.aerospike.mapping.Document;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
+/**
+ * ChatMessage
+ *
+ * @author Vladislav Sidlyarevich <vlsidlyarevich@gmail.com>
+ * Created on 1/13/21.
+ */
 @Value
 public class ChatMessage {
 
