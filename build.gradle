@@ -26,13 +26,19 @@ repositories {
 }
 
 dependencies {
+
+	//Spring-specific region
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	implementation 'com.aerospike:spring-data-aerospike:2.4.2.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-	//Static web dependencies
+	//Validation region
+
+
+	//Static web dependencies region
 	runtimeOnly 'org.webjars:webjars-locator-core'
 	runtimeOnly 'org.webjars:sockjs-client:1.0.2'
 	runtimeOnly 'org.webjars:stomp-websocket:2.3.3'
@@ -41,10 +47,10 @@ dependencies {
 
 
 	compileOnly 'org.projectlombok:lombok'
-
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 
+	//Test region
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 //	testImplementation 'org.springframework.security:spring-security-test'
 }
