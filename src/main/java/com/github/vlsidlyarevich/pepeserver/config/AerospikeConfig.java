@@ -10,6 +10,7 @@ import org.springframework.data.aerospike.config.AbstractAerospikeDataConfigurat
 import org.springframework.data.aerospike.repository.config.EnableAerospikeRepositories;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 /**
  * Aerospike configuration.
@@ -27,11 +28,14 @@ public class AerospikeConfig extends AbstractAerospikeDataConfiguration {
 
     @Override
     protected Collection<Host> getHosts() {
-        return null;
+        return properties.getHosts()
+                .stream()
+                .map(host -> new Host(host.getName(), host.getTlsName(), host.getPort()))
+                .collect(Collectors.toList());
     }
 
     @Override
     protected String nameSpace() {
-        return null;
+        return properties.getNamespace();
     }
 }
