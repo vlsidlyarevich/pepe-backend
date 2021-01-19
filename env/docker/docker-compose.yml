@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  aerospike:
+    image: aerospike/aerospike-server:latest
+    networks:
+      - aerospikenetwork
+    deploy:
+      replicas: 2
+      endpoint_mode: dnsrr
+    labels:
+      com.github.vlsidlyarevich.pepe.description: "Docker compose stack for pepe chat"
+#    command: [ "--config-file","/run/secrets/aerospike.conf" ]
+#    secrets:
+#      - source: conffile
+#        target: aerospike.conf
+#        mode: 0440
+
+networks:
+  aerospikenetwork:
+    driver: overlay
+    attachable: true
+
+#secrets:
+#  conffile:
+#    file: ./aerospike.conf
+

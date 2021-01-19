@@ -6,6 +6,20 @@
 
 Backend part of simple chat application for training purposes. 
 
+<!-- PREREQUISITES -->
+
+
+<!-- HOW TO RUN -->
+## How to run
+### Aerospike
+To run aerospike cluster you need to init docker swarm mode:
+```console
+docker swarm init
+```
+And then:
+```console
+cd ./env/docker && docker stack deploy -c docker-compose.yml pepe
+```
 
 
 <!-- LICENSE -->
