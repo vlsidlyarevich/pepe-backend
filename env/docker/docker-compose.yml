@@ -4,9 +4,10 @@ services:
     image: aerospike/aerospike-server:latest
     networks:
       - aerospikenetwork
+    ports:
+      - "3000:3000"
     deploy:
       replicas: 2
-      endpoint_mode: dnsrr
     labels:
       com.github.vlsidlyarevich.pepe.description: "Docker compose stack for pepe chat"
 #    command: [ "--config-file","/run/secrets/aerospike.conf" ]
