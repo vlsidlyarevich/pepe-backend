@@ -1,6 +1,6 @@
-package com.github.vlsidlyarevich.pepeserver.message.service;
+package com.github.vlsidlyarevich.pepeserver.room.service;
 
-import com.github.vlsidlyarevich.pepeserver.message.domain.ChatRoom;
+import com.github.vlsidlyarevich.pepeserver.room.domain.ChatRoom;
 
 /**
  * ChatRoomService

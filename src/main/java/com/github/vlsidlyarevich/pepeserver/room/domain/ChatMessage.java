@@ -1,4 +1,4 @@
-package com.github.vlsidlyarevich.pepeserver.message.domain;
+package com.github.vlsidlyarevich.pepeserver.room.domain;
 
 import lombok.Value;
 

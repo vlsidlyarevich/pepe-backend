@@ -1,6 +1,6 @@
-package com.github.vlsidlyarevich.pepeserver.message.repository;
+package com.github.vlsidlyarevich.pepeserver.room.repository;
 
-import com.github.vlsidlyarevich.pepeserver.message.domain.ChatRoom;
+import com.github.vlsidlyarevich.pepeserver.room.domain.ChatRoom;
 import org.springframework.data.aerospike.repository.AerospikeRepository;
 import org.springframework.stereotype.Repository;
 

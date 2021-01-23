@@ -1,7 +1,7 @@
 package com.github.vlsidlyarevich.pepeserver.config;
 
 import com.aerospike.client.Host;
-import com.github.vlsidlyarevich.pepeserver.message.repository.AerospikeRepository;
+import com.github.vlsidlyarevich.pepeserver.room.repository.AerospikeRoomRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Configuration
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 @EnableConfigurationProperties(value = AerospikeProperties.class)
-@EnableAerospikeRepositories(basePackageClasses = AerospikeRepository.class)
+@EnableAerospikeRepositories(basePackageClasses = AerospikeRoomRepository.class)
 public class AerospikeConfig extends AbstractAerospikeDataConfiguration {
 
     private final AerospikeProperties properties;

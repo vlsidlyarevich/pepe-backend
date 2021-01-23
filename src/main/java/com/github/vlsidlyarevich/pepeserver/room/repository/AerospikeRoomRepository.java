@@ -1,4 +1,4 @@
-package com.github.vlsidlyarevich.pepeserver.message.repository;
+package com.github.vlsidlyarevich.pepeserver.room.repository;
 
 /**
  * Noop marker interface for aerospike repos scanning.
@@ -6,5 +6,5 @@ package com.github.vlsidlyarevich.pepeserver.message.repository;
  * @author Vladislav Sidlyarevich <vlsidlyarevich@gmail.com>
  * Created on 1/14/21.
  */
-public interface AerospikeRepository {
+public interface AerospikeRoomRepository {
 }

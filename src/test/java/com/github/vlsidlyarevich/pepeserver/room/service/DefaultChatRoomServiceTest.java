@@ -1,8 +1,8 @@
-package com.github.vlsidlyarevich.pepeserver.message.service;
+package com.github.vlsidlyarevich.pepeserver.room.service;
 
 import com.github.vlsidlyarevich.pepeserver.AbstractUnitTest;
-import com.github.vlsidlyarevich.pepeserver.message.domain.ChatRoom;
-import com.github.vlsidlyarevich.pepeserver.message.repository.ChatRoomRepository;
+import com.github.vlsidlyarevich.pepeserver.room.domain.ChatRoom;
+import com.github.vlsidlyarevich.pepeserver.room.repository.ChatRoomRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

@@ -1,4 +1,4 @@
-package com.github.vlsidlyarevich.pepeserver.message.domain;
+package com.github.vlsidlyarevich.pepeserver.room.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ChatRoom
+ * ChatRoom model.
  *
  * @author Vladislav Sidlyarevich <vlsidlyarevich@gmail.com>
  * Created on 1/13/21.
@@ -40,5 +40,9 @@ public class ChatRoom {
         this.linkedMessage = linkedMessage;
         this.createdAt = createdAt;
         this.userIds.addAll(userIds);
+    }
+
+    public void setId(final String id) {
+        this.id = id;
     }
 }
