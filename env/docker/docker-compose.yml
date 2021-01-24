@@ -1,17 +1,17 @@
 version: "3.9"
 services:
   mongodb:
-    image: mongo:latest
+    image: mongo:4.4
     container_name: pepe_mongodb
+    restart: always
     environment:
-      - MONGODB_INITDB_DATABASE=pepe-chat
-      - MONGODB_INITDB_ROOT_USERNAME=root
-      - MONGODB_INITDB_ROOT_PASSWORD=root
+      MONGO_INITDB_DATABASE: pepe-chat
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_ROOT_USERNAME: admin
     volumes:
       - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-      - ./mongo-volume:/data/db
+#      - ./mongo-volume:/data/db
     ports:
       - "27017-27019:27017-27019"
     labels:
       com.github.vlsidlyarevich.pepe.description: "Docker compose stack for pepe chat"
-    command: [ "--config-file","/run/secrets/aerospike.conf" ]

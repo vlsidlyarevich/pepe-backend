@@ -1,6 +1,6 @@
 db.createUser ({
-    user: "pepe-chat",
-    password: "gj%A7grOs3",
+    user: "pepe_chat",
+    pwd: "gj%A7grOs3",
     roles: [
         {
             role: "readWrite",
