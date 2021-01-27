@@ -1,7 +1,7 @@
 package com.github.vlsidlyarevich.pepeserver.room.repository;
 
 import com.github.vlsidlyarevich.pepeserver.room.domain.ChatRoom;
-import org.springframework.data.aerospike.repository.AerospikeRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  * Created on 1/13/21.
  */
 @Repository
-public interface ChatRoomRepository extends AerospikeRepository<ChatRoom, String> {
+public interface ChatRoomRepository extends MongoRepository<ChatRoom, String> {
 
 }

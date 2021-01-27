@@ -1,9 +1,9 @@
 server:
   port: 8080
 
-aerospike:
-  hosts:
-    -
-      name: 127.0.0.1
-      port: 3000
-  namespace: pepe
+mongodb:
+  database: pepe-chat
+  host: localhost
+  port: 27017
+  username: 'pepe_chat'
+  password: 'gjA7grOs3'

@@ -3,8 +3,9 @@ package com.github.vlsidlyarevich.pepeserver.room.domain;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import org.springframework.data.aerospike.mapping.Document;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class ChatRoom {
 
     @Id
     private String id;
+    @Indexed(unique = true)
     private final String name;
     private final List<ChatMessage> messages = new ArrayList<>();
     private final ChatMessage linkedMessage;
