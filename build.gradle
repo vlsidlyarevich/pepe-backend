@@ -52,6 +52,7 @@ dependencies {
 
 	//Test region
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.testcontainers:mongodb:1.15.1'
 //	testImplementation 'org.springframework.security:spring-security-test'
 }
 
