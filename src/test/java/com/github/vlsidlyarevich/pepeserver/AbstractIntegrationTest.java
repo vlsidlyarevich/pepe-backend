@@ -40,8 +40,7 @@ public class AbstractIntegrationTest {
 
         @Override
         public void initialize(final ConfigurableApplicationContext applicationContext) {
-            TestPropertyValues.of("mongodb.host=" + MONGO_DB_CONTAINER.getHost(),
-                    "mongodb.port=" + String.valueOf(MONGO_DB_CONTAINER.getExposedPorts().get(0)))
+            TestPropertyValues.of("spring.data.mongodb.uri=" + MONGO_DB_CONTAINER.getReplicaSetUrl())
                     .applyTo(applicationContext);
         }
     }

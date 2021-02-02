@@ -1,6 +1,0 @@
-mongodb:
-  database: pepe-test
-  host: localhost
-  port: 27017
-  username: 'pepe_test'
-  password: 'a2tGa5AS'
