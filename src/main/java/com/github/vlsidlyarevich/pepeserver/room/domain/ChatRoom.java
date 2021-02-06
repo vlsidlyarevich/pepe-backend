@@ -2,6 +2,7 @@ package com.github.vlsidlyarevich.pepeserver.room.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -24,6 +25,7 @@ import java.util.List;
 public class ChatRoom {
 
     @Id
+    @Setter
     private String id;
     @Indexed(unique = true)
     private final String name;
@@ -42,9 +44,5 @@ public class ChatRoom {
         this.linkedMessage = linkedMessage;
         this.createdAt = createdAt;
         this.userIds.addAll(userIds);
-    }
-
-    public void setId(final String id) {
-        this.id = id;
     }
 }

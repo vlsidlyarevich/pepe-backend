@@ -1,6 +1,7 @@
 package com.github.vlsidlyarevich.pepeserver.room.domain;
 
 import lombok.Value;
+import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @Value
 public class ChatMessage {
 
+    @Id
     String id;
     String chatId;
     String senderId;
