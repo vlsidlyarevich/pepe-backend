@@ -7,9 +7,11 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.annotation.Annotation;
+import java.util.regex.Pattern;
 
 /**
  * {@link ApiVersion} annotation {@link BeanPostProcessor}.
@@ -21,6 +23,10 @@ import java.lang.annotation.Annotation;
  */
 @Component
 public class ApiVersionAnnotationBeanPostProcessor implements BeanPostProcessor {
+
+    private static final String VERSION_REGEXP = "\\/v\\d+\\/";
+
+    private static final String VERSION_PATTERN = "/v%d/";
 
     @Override
     public Object postProcessBeforeInitialization(final Object bean, final String beanName) throws BeansException {
@@ -34,6 +40,13 @@ public class ApiVersionAnnotationBeanPostProcessor implements BeanPostProcessor 
     }
 
     private Object processAnnotation(ApiVersion apiVersion, Object bean) {
+        String actualPath = bean.getClass().getAnnotation(RestController.class).value();
+
+        if(Pattern.compile(VERSION_REGEXP).matcher(actualPath).find()) return bean;
+
+        String pathWithVersion = String.format(VERSION_PATTERN, apiVersion.version()).concat(actualPath)
+                .replace("//", "/");
+
         AnnotationReflectionRuntimeSupport.updateAnnotationValue(RestController.class, new Controller() {
 
             @Override
@@ -43,9 +56,9 @@ public class ApiVersionAnnotationBeanPostProcessor implements BeanPostProcessor 
 
             @Override
             public String value() {
-                return ;
+                return pathWithVersion;
             }
-        },
+        }, bean);
         return bean;
     }
 }
