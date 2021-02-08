@@ -7,7 +7,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.annotation.Annotation;
@@ -41,11 +40,9 @@ public class ApiVersionAnnotationBeanPostProcessor implements BeanPostProcessor 
 
     private Object processAnnotation(ApiVersion apiVersion, Object bean) {
         String actualPath = bean.getClass().getAnnotation(RestController.class).value();
+        if (isVersionedPath(actualPath)) return bean;
 
-        if(Pattern.compile(VERSION_REGEXP).matcher(actualPath).find()) return bean;
-
-        String pathWithVersion = String.format(VERSION_PATTERN, apiVersion.version()).concat(actualPath)
-                .replace("//", "/");
+        String pathWithVersion = generatePath(actualPath, apiVersion.version());
 
         AnnotationReflectionRuntimeSupport.updateAnnotationValue(RestController.class, new Controller() {
 
@@ -59,6 +56,15 @@ public class ApiVersionAnnotationBeanPostProcessor implements BeanPostProcessor 
                 return pathWithVersion;
             }
         }, bean);
+
         return bean;
+    }
+
+    private boolean isVersionedPath(String actual) {
+        return (Pattern.compile(VERSION_REGEXP).matcher(actual).find());
+    }
+
+    private String generatePath(String actual, Integer version) {
+        return String.format(VERSION_PATTERN, version).concat(actual).replace("//", "/");
     }
 }
