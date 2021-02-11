@@ -44,7 +44,7 @@ public class ApiVersionAnnotationBeanPostProcessor implements BeanPostProcessor 
 
         String pathWithVersion = generatePath(actualPath, apiVersion.version());
 
-        AnnotationReflectionRuntimeSupport.updateAnnotationValue(RestController.class, new Controller() {
+        AnnotationReflectionRuntimeSupport.updateAnnotationValue(RestController.class, new RestController() {
 
             @Override
             public Class<? extends Annotation> annotationType() {
