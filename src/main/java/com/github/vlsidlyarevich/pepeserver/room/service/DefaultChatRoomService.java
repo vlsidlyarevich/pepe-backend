@@ -4,9 +4,12 @@ import com.github.vlsidlyarevich.pepeserver.room.domain.ChatRoom;
 import com.github.vlsidlyarevich.pepeserver.room.repository.ChatRoomRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+import static org.springframework.util.StringUtils.hasText;
 
 /**
  * DefaultChatRoomService
@@ -22,9 +25,12 @@ public class DefaultChatRoomService implements ChatRoomService {
     private final ChatRoomRepository repository;
 
     @Override
-    public ChatRoom save(final ChatRoom toSave) {
-        if (toSave == null) throw new IllegalArgumentException("Can't save nullable ChatRoom");
+    public ChatRoom create(final String name, final List<String> userIds) {
+        if (!hasText(name))
+            throw new IllegalArgumentException("Chat room name can't be empty or nullable");
+        if (userIds == null || userIds.isEmpty())
+            throw new IllegalArgumentException("Chat room users can't be empty or nullable");
 
-        return repository.save(toSave);
+        return repository.save(new ChatRoom(name, userIds));
     }
 }

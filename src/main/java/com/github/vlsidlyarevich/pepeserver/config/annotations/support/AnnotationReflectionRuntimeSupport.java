@@ -9,10 +9,9 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
- * AnnotationReflectionRuntimeSupport
+ * Support class for runtime manipulating annotations at runtime.
  *
- * @author Vladislav Sidlyarevich <vlsidlyarevich@gmail.com>
- * Created on 2/6/21.
+ * @author Vladislav Sidlyarevich <vlsidlyarevich@gmail.com> Created on 2/6/21.
  */
 @UtilityClass
 public class AnnotationReflectionRuntimeSupport {
@@ -20,6 +19,16 @@ public class AnnotationReflectionRuntimeSupport {
     private static final String ANNOTATION_DATA_INTERNAL_METHOD_NAME = "annotationData";
     private static final String ANNOTATIONS_INTERNAL_FIELD_NAME = "annotations";
 
+    /**
+     * Replace {@code annotation} of {@code annotationClass} on {@code annotatedObject}.
+     * Note that it only works since JDK8 because of changing annotations implementation.
+     *
+     * @param annotationClass the annotation class to replace
+     * @param replacement     the replacement annotation
+     * @param annotatedObject the annotated object
+     *
+     * @throws IllegalArgumentException if the underlying reflection methods throws exception.
+     */
     public static void updateAnnotationValue(Class<? extends Annotation> annotationClass,
                                              Annotation replacement,
                                              Object annotatedObject) {

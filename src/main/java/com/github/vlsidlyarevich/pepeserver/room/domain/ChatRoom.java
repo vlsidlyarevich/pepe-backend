@@ -28,11 +28,17 @@ public class ChatRoom {
     @Setter
     private String id;
     @Indexed(unique = true)
-    private final String name;
+    private String name;
     private final List<ChatMessage> messages = new ArrayList<>();
-    private final ChatMessage linkedMessage;
-    private final LocalDateTime createdAt;
+    private ChatMessage linkedMessage;
+    private LocalDateTime createdAt;
     private final List<String> userIds = new ArrayList<>();
+
+    public ChatRoom(final String name,
+                    final List<String> userIds) {
+        this.name = name;
+        this.userIds.addAll(userIds);
+    }
 
     public ChatRoom(final String name,
                     final List<ChatMessage> messages,

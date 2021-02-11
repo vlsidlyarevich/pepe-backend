@@ -2,12 +2,17 @@ package com.github.vlsidlyarevich.pepeserver.web.rest;
 
 import com.github.vlsidlyarevich.pepeserver.room.service.ChatRoomService;
 import com.github.vlsidlyarevich.pepeserver.web.rest.annotations.ApiVersion;
+import com.github.vlsidlyarevich.pepeserver.web.rest.model.CreateChatRoomRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 /**
  * ChatRoomController
@@ -21,10 +26,12 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class ChatRoomController {
 
-    private ChatRoomService service;
+    private final ChatRoomService service;
+
 
     @PostMapping
-    public ResponseEntity create() {
+    public ResponseEntity create(@Valid @RequestBody final CreateChatRoomRequest request) {
+
         return ResponseEntity.ok().build();
     }
 }

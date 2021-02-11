@@ -2,6 +2,8 @@ package com.github.vlsidlyarevich.pepeserver.room.service;
 
 import com.github.vlsidlyarevich.pepeserver.room.domain.ChatRoom;
 
+import java.util.List;
+
 /**
  * ChatRoomService
  *
@@ -10,5 +12,5 @@ import com.github.vlsidlyarevich.pepeserver.room.domain.ChatRoom;
  */
 public interface ChatRoomService {
 
-    ChatRoom save(ChatRoom toSave);
+    ChatRoom create(String name, List<String> userIds);
 }
