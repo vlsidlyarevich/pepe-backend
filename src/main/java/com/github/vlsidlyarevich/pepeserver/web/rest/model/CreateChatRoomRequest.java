@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,8 @@ import java.util.List;
 @NoArgsConstructor
 public class CreateChatRoomRequest {
 
+    @NotBlank
     private String name;
+    @NotEmpty
     private List<String> userIds = new ArrayList<>();
 }
